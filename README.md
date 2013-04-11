@@ -3,7 +3,7 @@ a yeoman generator for kissy pie
 ## install
 ### 安装yeoman
 ````sh
-npm install yo
+npm install yo -g
 ````
 
 ### 安装Generator
