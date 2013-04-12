@@ -1,4 +1,4 @@
-a yeoman generator for kissy pie
+a yeoman generator for kissy-gallery
 
 ## install
 ### 安装yeoman

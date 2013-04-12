@@ -11,26 +11,22 @@ function AppGenerator(args, options, config) {
 
 util.inherits(AppGenerator, yeoman.generators.NamedBase);
 
-AppGenerator.prototype.askFor = function askFor(pagePath) {
-  if(this.name){
-    return
-  }
+AppGenerator.prototype.askFor = function() {
   var cb = this.async();
-    var prompts = [{
-        name: 'version',
-        message: 'please input the version number(like 1.0) : ',
-        default: '1.0',
-        warning: 'warnings'
-    }];
+  var prompts = [{
+    name: 'version',
+    message: 'please input init version number ',
+    default: '1.0',
+    warning: '开始gallery之旅吧'
+  }];
   this.prompt(prompts
-             , function (err, props) {
-                 if (err) {
-                   this.emit('error', err);
-                 }else{
-                   this.name = props['version']
-                   cb();
-                 }
-               }.bind(this));
+             ,function (err, props) {
+                if (err) {
+                  this.emit('error', err);
+                }
+                this.name = props.version;
+                cb();
+              }.bind(this));
 }
 
 AppGenerator.prototype.initVersionDir = function(){
