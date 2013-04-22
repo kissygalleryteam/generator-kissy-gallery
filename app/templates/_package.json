@@ -1,11 +1,15 @@
 {
-    "name": "app_name",
-    "description": "I am a kissy gallery module",
+    "name": "<%= moduleNmae %>",
+    "version": "0.0.0",
+    "description": "The best KISSY gallery module ever",
     "repository": "",
-    "keywords": [ "kissy", "kissy gallery", "abc" ],
-    "author": "author <email>",
+    "keywords": [
+        "kissy gallery module"
+    ],
+    "author": "<%= author %> <<%= authorEmail %>>",
     "license": "BSD",
     "devDependencies": {
-        "yeoman-generator": "~0.10.3"
+        "grunt": "~0.10.3"
     }
 }
+

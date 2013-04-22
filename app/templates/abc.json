@@ -1,18 +1,14 @@
 {
-  "name":"app_name",
+  "name":"<%= appName %>",
   "desc":"description of your app",
   "type":"kissy-pie",
   "type-url":"http://abc.alibaba-inc.com/r/kissy-pie",
   "author":{
-    "name","your_name",
-    "email","your_email"
+    "name": "<%= author %>",
+    "email": "<%= authorEmail %>"
   },
   "_gallery":{
-    "package":"app_name",
-    "version":"version"
-  },
-  "fide.tasks":{
-    
+    "package":"gallery",
+    "version":"<%= moduleVersion %>"
   }
 }
-
