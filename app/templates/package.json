@@ -1,5 +1,5 @@
 {
-    "name": "app_name",
+    "name": "<%= moduleName %>",
     "description": "I am a kissy gallery module",
     "repository": "",
     "keywords": [ "kissy", "kissy gallery", "abc" ],

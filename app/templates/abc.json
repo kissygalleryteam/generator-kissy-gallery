@@ -1,5 +1,5 @@
 {
-  "name":"<%= appName %>",
+  "name":"<%= moduleName %>",
   "desc":"description of your app",
   "type":"kissy-pie",
   "type-url":"http://abc.alibaba-inc.com/r/kissy-pie",

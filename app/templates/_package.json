@@ -1,5 +1,5 @@
 {
-    "name": "<%= moduleNmae %>",
+    "name": "<%= moduleName %>",
     "version": "0.0.0",
     "description": "The best KISSY gallery module ever",
     "repository": "",
