@@ -59,5 +59,6 @@ prt.gruntfile = function(){
 }
 
 prt.pkgJSON = function(){
-    this.template('_package.json','package.json');
+  this.template('_package.json','package.json');
+  console.log('请手动配置package.json，来方便进行kissy gallery打包！')
 }
