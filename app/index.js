@@ -7,7 +7,7 @@ module.exports = Gallery;
 function Gallery(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
   var that = this;
-  this.hookFor('kissy-gallery:version',{
+  this.hookFor('kissy-gallery:version', {
     args:[false]
   });
   this.on('end',function(){
@@ -30,6 +30,11 @@ prt.readme = function(){
 prt.abcJSON = function(){
   this.template('abc.json','abc.json');
 }
+
+prt.pkgJSON = function(){
+    this.template('_package.json','package.json');
+}
+
 prt.gruntfile = function(){
   this.template('Gruntfile.js','Gruntfile.js');
 }
