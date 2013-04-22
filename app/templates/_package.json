@@ -1,0 +1,14 @@
+{
+    "name": "<%= moduleNmae %>",
+    "version": "0.0.0",
+    "description": "The best KISSY gallery module ever",
+    "repository": "",
+    "keywords": [
+        "kissy gallery module"
+    ],
+    "author": "<%= author %> <<%= authorEmail %>>",
+    "license": "BSD",
+    "devDependencies": {
+        "grunt": "~0.10.3"
+    }
+}
