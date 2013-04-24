@@ -1,14 +1,20 @@
 {
     "name": "<%= moduleName %>",
     "version": "0.0.0",
-    "description": "The best KISSY gallery module ever",
+    "author": "<%= author %> <<%= email %>>",
+    "description": "The best KISSY Gallery module ever",
     "repository": "",
     "keywords": [
         "kissy gallery module"
     ],
-    "author": "<%= author %> <<%= authorEmail %>>",
     "license": "BSD",
     "devDependencies": {
-        "grunt": "~0.10.3"
+        "grunt": "~0.4.1",
+        "grunt-contrib-clean": "~0.4.1",
+        "grunt-contrib-copy": "~0.4.1",
+        "grunt-contrib-uglify": "~0.2.0",
+        "grunt-contrib-cssmin": "~0.6.0",
+        "grunt-contrib-less": "~0.5.0",
+        "grunt-kmc": "~0.1.1"
     }
 }

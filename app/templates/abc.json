@@ -1,14 +1,11 @@
 {
   "name":"<%= moduleName %>",
+  "version":"<%= moduleVersion %>",
   "desc":"description of your app",
   "type":"kissy-pie",
-  "type-url":"http://abc.alibaba-inc.com/r/kissy-pie",
+  "type-url":"http://abc.f2e.taobao.net/spec/kissy-gallery",
   "author":{
     "name": "<%= author %>",
-    "email": "<%= authorEmail %>"
-  },
-  "_gallery":{
-    "package":"gallery",
-    "version":"<%= moduleVersion %>"
+    "email": "<%= email %>"
   }
 }
