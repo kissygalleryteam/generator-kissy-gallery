@@ -37,3 +37,18 @@ yo kissy-gallery:version
 ````
 
 用于生成新的版本目录
+
+### 打包组件
+
+先加载grunt依赖
+
+````sh
+cd 组件目录
+npm install
+````
+
+然后执行
+
+````sh
+grunt
+````
