@@ -100,6 +100,7 @@ prt.askFor = function askFor() {
 
 prt.pkgJSON = function(){
   this.template('_package.json','package.json');
+  console.log('请手动配置package.json，来方便进行kissy gallery打包！');
 }
 
 prt.abcJSON = function(){
@@ -118,4 +119,3 @@ prt.install = function install() {
   var cb = this.async();
   this.npmInstall('', {}, cb);
 };
-
