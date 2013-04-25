@@ -1,0 +1,13 @@
+{
+    "name": "<%= componentName %>",
+    "version": "<%= version %>",
+    "desc": "请修改组件描述",
+    "cover": "",
+    "author": {
+        "name": "请修改作者名",
+        "email": "请修改作者邮箱",
+        "page": "请修改作者个人首页"
+    },
+    "type": "kissy-pie",
+    "type-url": "http://abc.alibaba-inc.com/r/kissy-pie"
+}
