@@ -1,15 +1,10 @@
 {
-    "name": "<%= componentName %>",
-    "version": "<%= version %>",
-    "description": "The best KISSY gallery module ever",
-    "repository": "",
-    "keywords": [
-        "kissy gallery module"
-    ],
-    "author": "",
-    "license": "BSD",
-    "devDependencies": {
-        "grunt": "~0.10.3"
-    }
+"name": "<%= componentName %>",
+"version": "<%= version %>.0",
+"devDependencies": {
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt": "~0.4.1",
+    "grunt-kmc": "~0.1.1"
+}
 }
 

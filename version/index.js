@@ -38,7 +38,7 @@ AppGenerator.prototype.initVersionDir = function () {
     if(componentName){
         version = componentName + '/' + version;
         this.template('abc.json',componentName + '/abc.json');
-        this.version = this.version + '.0';
+        this.version = this.version;
         this.template('_package.json',componentName + '/package.json');
         this.template('README.md',componentName + '/README.md');
     }else{
@@ -47,7 +47,7 @@ AppGenerator.prototype.initVersionDir = function () {
             return json;
         });
         this.writeJson('./package.json',function(json){
-            json.version = version+'.0';
+            json.version = version;
             return json;
         });
     }

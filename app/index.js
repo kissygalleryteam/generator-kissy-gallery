@@ -15,8 +15,8 @@ function Gallery(args, options, config) {
         console.log('gallery dir build done!');
         console.log("模块初始化完成！")
         console.log("\n调用：")
-        console.log('  grunt build 1.0 # 打包你的组件')
-        console.log('  grunt test      # 测试你的组件')
+        console.log('npm install #加载grunt依赖')
+        console.log('grunt #打包你的组件')
     })
 }
 
