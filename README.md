@@ -32,6 +32,7 @@ yo kissy-gallery # 初始化组件
 就会生成组件目录了。
 
 ````sh
+cd 组件目录
 yo kissy-gallery:version
 ````
 
