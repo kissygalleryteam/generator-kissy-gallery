@@ -16,11 +16,23 @@ cd generator-kissy-gallery
 npm link
 ````
 
-第二步：构建你自己gallery组建，比如:创建一个uplodaer组建，且初始版本设置为1.0
+
+第二步：手动创建个gallery目录（已经有了，就不需要）
+````sh
+mkdir gallery
+cd gallery
+````
+
+第三步：执行如下命令
 
 ````sh
-mkdir uploader
-cd uploader
 yo kissy-gallery # 初始化组件
-yo kissy-gallery:version 1.0 # 创建1.0版本
 ````
+
+就会生成组件目录了。
+
+````sh
+yo kissy-gallery:version
+````
+
+用于生成新的版本目录
