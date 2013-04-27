@@ -39,6 +39,7 @@ AppGenerator.prototype.initVersionDir = function () {
         version = componentName + '/' + version;
         this.template('abc.json',componentName + '/abc.json');
         this.version = this.version;
+
         this.template('_package.json',componentName + '/package.json');
         this.template('README.md',componentName + '/README.md');
     }else{
@@ -59,8 +60,10 @@ AppGenerator.prototype.initVersionDir = function () {
     this.mkdir(path.join(version, 'plugin'))
     this.mkdir(path.join(version, 'guide'))
 
-    this.template('index.js', path.join(version, 'index.js'))
-    this.template('index.md', path.join(version, 'guide', 'index.md'))
+    this.comConfig = comConfig(this);
+    this.template('index.js', path.join(version, 'index.js'));
+    this.template('index.md', path.join(version, 'guide', 'index.md'));
+    this.template('index.html', path.join(version, 'demo', 'index.html'));
 }
 
 AppGenerator.prototype.writeJson = function(file,fnMap){
@@ -69,4 +72,19 @@ AppGenerator.prototype.writeJson = function(file,fnMap){
     var oAbcJson = JSON.parse(sAbcJson);
     oAbcJson = fnMap.call(this,oAbcJson);
     this.write(file,JSON.stringify(oAbcJson));
+}
+
+function comConfig(that){
+    var jsonFile = './abc.json';
+    if(that.env.options.componentName){
+        jsonFile = that.env.options.componentName + '/abc.json';
+    }
+    var sAbcJson = that.readFileAsString(jsonFile);
+    var comConfig = JSON.parse(sAbcJson);
+    var comName = comConfig.name;
+    if(!comName) return false;
+    var first = comName.substring(0,1).toUpperCase();
+    var componentClass = first + comName.substring(1);
+    comConfig.componentClass = componentClass;
+    return comConfig;
 }

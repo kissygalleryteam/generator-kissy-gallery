@@ -1,3 +1,5 @@
 ## <%= componentName %>
 
-版本：<%= version %>
+* 版本：<%= version %>
+
+
