@@ -52,13 +52,8 @@ AppGenerator.prototype.initVersionDir = function () {
             return json;
         });
     }
-    this.mkdir(version)
-    this.mkdir(path.join(version, 'demo'))
-    this.mkdir(path.join(version, 'doc'))
-    this.mkdir(path.join(version, 'spec'))
-    this.mkdir(path.join(version, 'build'))
-    this.mkdir(path.join(version, 'plugin'))
-    this.mkdir(path.join(version, 'guide'))
+
+    mk(version,this);
 
     this.comConfig = comConfig(this);
     this.template('index.js', path.join(version, 'index.js'));
@@ -87,4 +82,13 @@ function comConfig(that){
     var componentClass = first + comName.substring(1);
     comConfig.componentClass = componentClass;
     return comConfig;
+}
+
+function mk(version,that){
+    if(!version) return false;
+    that.mkdir(version);
+    var fold = ['demo','doc','spec','build','plugin','guide'];
+    for(var i=0;i<fold.length;i++){
+        that.mkdir(path.join(version, fold[i]));
+    }
 }
