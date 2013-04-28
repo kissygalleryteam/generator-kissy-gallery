@@ -66,6 +66,6 @@ prt.askFor = function(){
 
 prt.copyFile = function(){
     this.copy('Gruntfile.js',this.componentName + '/Gruntfile.js');
-    this.copy('.gitignore',this.componentName + '/.gitignore');
+    this.copy('_.gitignore',this.componentName + '/.gitignore');
 }
 
