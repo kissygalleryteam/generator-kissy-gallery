@@ -12,10 +12,9 @@ function Gallery(args, options, config) {
     });
 
     this.on('end',function(){
-        console.log('gallery dir build done!');
-        console.log("模块初始化完成！")
-        console.log("\n调用：")
-        console.log('npm install #加载grunt依赖')
+        console.log("组件目录和文件初始化完成！")
+        console.log("\n打包调用：")
+        console.log("cd 组件目录")
         console.log('grunt #打包你的组件')
     })
 }

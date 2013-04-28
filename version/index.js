@@ -42,13 +42,16 @@ AppGenerator.prototype.initVersionDir = function () {
 
         this.template('_package.json',componentName + '/package.json');
         this.template('README.md',componentName + '/README.md');
+        var root = this.destinationRoot(componentName);
+        this.installDependencies();
+        this.destinationRoot('../');
     }else{
         this.writeJson('./abc.json',function(json){
             json.version = version;
             return json;
         });
         this.writeJson('./package.json',function(json){
-            json.version = version;
+            json.version = version+'.0';
             return json;
         });
     }
@@ -57,8 +60,11 @@ AppGenerator.prototype.initVersionDir = function () {
 
     this.comConfig = comConfig(this);
     this.template('index.js', path.join(version, 'index.js'));
+    this.template('alias.js', path.join(version, 'meta','alias.js'));
+    this.template('modules.js', path.join(version, 'meta','modules.js'));
     this.template('index.md', path.join(version, 'guide', 'index.md'));
     this.template('index.html', path.join(version, 'demo', 'index.html'));
+
 }
 
 AppGenerator.prototype.writeJson = function(file,fnMap){
@@ -87,7 +93,7 @@ function comConfig(that){
 function mk(version,that){
     if(!version) return false;
     that.mkdir(version);
-    var fold = ['demo','doc','spec','build','plugin','guide'];
+    var fold = ['demo','doc','spec','build','plugin','guide','meta'];
     for(var i=0;i<fold.length;i++){
         that.mkdir(path.join(version, fold[i]));
     }
