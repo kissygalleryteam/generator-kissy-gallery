@@ -2,53 +2,41 @@ a yeoman generator for kissy-gallery
 
 ## install
 ### 安装yeoman
-````sh
-npm install yo -g
-````
-
-### 安装Generator
-
-第一步：安装generator
 
 ````sh
-git clone git@github.com:neekey/generator-kissy-gallery.git
-cd generator-kissy-gallery
-npm link
+npm install yo grunt-cli -g
 ````
 
-
-第二步：手动创建个gallery目录（已经有了，就不需要）
-````sh
-mkdir gallery
-cd gallery
-````
-
-第三步：执行如下命令
+### 安装kissy-gallery目录生成器
 
 ````sh
-yo kissy-gallery # 初始化组件
+npm install generator-kissy-gallery -g
 ````
 
-就会生成组件目录了。
+### 生成组件目录
+
+比如你的组件目录是offline，进入该目录，然后执行命令：
 
 ````sh
-cd 组件目录
-yo kissy-gallery:version
+yo kissy-gallery 1.0
 ````
 
-用于生成新的版本目录
+默认版本为1.0。
 
 ### 打包组件
 
-先加载grunt依赖
-
-````sh
-cd 组件目录
-npm install
-````
-
-然后执行
+在组件目录下执行如下命令：
 
 ````sh
 grunt
+````
+
+可以修改gruntfile.js来自定义组件的构建。
+
+### 发布一个新的版本
+
+在组件目录下执行如下命令：
+
+````sh
+yo kissy-gallery:version 1.1
 ````
