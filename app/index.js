@@ -8,9 +8,9 @@ function Gallery(args, options, config) {
     yeoman.generators.Base.apply(this, arguments);
     this.version = args[0] || '1.0';
     this.cwd = options.env.cwd;
-    console.log(this.cwd);
     this.componentName = getComName(this);
     this.on('end',function(){
+        this.installDependencies();
         console.log("组件目录和文件初始化完成！")
         console.log("\n打包组件运行：")
         console.log('grunt')
