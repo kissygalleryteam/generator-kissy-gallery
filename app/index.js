@@ -92,8 +92,8 @@ prt.createVersion = function(){
 }
 
 function getComName(that){
-    var root = that.destinationRoot();
-    return 'demo';
+    var root = that.cwd;
+    return path.basename(root);
 }
 
 function comConfig(that){
