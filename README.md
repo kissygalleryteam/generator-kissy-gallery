@@ -40,3 +40,8 @@ grunt
 ````sh
 yo kissy-gallery:version 1.1
 ````
+
+##changelog
+
+###0.1.5
+*修正yo kissy-gallery:version命令无效的bug
