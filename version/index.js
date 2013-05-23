@@ -44,19 +44,19 @@ AppGenerator.prototype.writeJson = function(file,fnMap){
 }
 
 /**
- * @param {String} origin Ô­Ê¼Ä¿Â¼£¬¼´´ı¸´ÖÆµÄÄ¿Â¼
- * @param {String} target Ä¿±êÄ¿Â¼
+ * @param {String} origin åŸå§‹ç›®å½•ï¼Œå³å¾…å¤åˆ¶çš„ç›®å½•
+ * @param {String} target ç›®æ ‡ç›®å½•
  */
 function copyDir(origin,target){
-    //Èç¹ûÔ­Ê¼Ä¿Â¼²»´æÔÚ£¬ÔòÍÆ³ö
+    //å¦‚æœåŸå§‹ç›®å½•ä¸å­˜åœ¨ï¼Œåˆ™æ¨å‡º
     if(!path.existsSync(origin)){
         console.log(origin + 'is not exist......');
     }
-    //Èç¹ûÄ¿±êÄ¿Â¼²»´æÔÚ¾Í´´½¨Ò»¸ö
+    //å¦‚æœç›®æ ‡ç›®å½•ä¸å­˜åœ¨å°±åˆ›å»ºä¸€ä¸ª
     if(!path.existsSync(target)){
         fs.mkdirSync(target);
     }
-    //Òì²½¶ÁÈ¡Ä¿Â¼ÖĞµÄÄÚÈİ£¬°Ñ·ÇºÚÃûµ¥ÖĞµÄÄ¿Â¼»òÕßÎÄ¼ş¸´ÖÆµ½Ä¿±êÄ¿Â¼ÏÂ
+    //å¼‚æ­¥è¯»å–ç›®å½•ä¸­çš„å†…å®¹ï¼ŒæŠŠéé»‘åå•ä¸­çš„ç›®å½•æˆ–è€…æ–‡ä»¶å¤åˆ¶åˆ°ç›®æ ‡ç›®å½•ä¸‹
     fs.readdir(origin,function(err,datalist){
         if(err) return;
         //console.log(datalist);
@@ -65,11 +65,11 @@ function copyDir(origin,target){
             var tCurrent = target + '/' + datalist[i];
             //console.log(fs.statSync(origin + '/' + datalist[i]).isFile());
 
-            //Èç¹ûµ±Ç°ÊÇÎÄ¼ş,ÔòĞ´Èëµ½¶ÔÓ¦µÄÄ¿±êÄ¿Â¼ÏÂ
+            //å¦‚æœå½“å‰æ˜¯æ–‡ä»¶,åˆ™å†™å…¥åˆ°å¯¹åº”çš„ç›®æ ‡ç›®å½•ä¸‹
             if(fs.statSync(oCurrent).isFile()){
                 fs.writeFileSync(tCurrent,fs.readFileSync(oCurrent, ''),'');
             }
-            //Èç¹ûÊÇÄ¿Â¼£¬Ôòµİ¹é
+            //å¦‚æœæ˜¯ç›®å½•ï¼Œåˆ™é€’å½’
             else if(fs.statSync(oCurrent).isDirectory()){
                 copyDir(oCurrent,tCurrent);
             }
