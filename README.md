@@ -43,5 +43,11 @@ yo kissy-gallery:version 1.1
 
 ##changelog
 
+###0.1.7
+*打包时中文ascii化
+
+###0.1.6
+*优化README.md
+
 ###0.1.5
 *修正yo kissy-gallery:version命令无效的bug
