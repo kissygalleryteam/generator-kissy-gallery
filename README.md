@@ -43,6 +43,9 @@ yo kissy-gallery:version 1.1
 
 ##changelog
 
+###0.1.8
+*修正编码问题
+
 ###0.1.7
 *打包时中文ascii化
 
