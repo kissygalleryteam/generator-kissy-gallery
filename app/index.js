@@ -75,7 +75,7 @@ prt.copyFile = function(){
 prt.mk = function(){
     var version = this.version;
     this.mkdir(version);
-    var fold = ['demo','doc','spec','build','plugin','guide','meta'];
+    var fold = ['demo','spec','build','plugin','guide','meta'];
     for(var i=0;i<fold.length;i++){
         this.mkdir(path.join(version, fold[i]));
     }

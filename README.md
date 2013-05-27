@@ -43,6 +43,9 @@ yo kissy-gallery:version 1.1
 
 ##changelog
 
+###0.1.9
+*去掉多余依赖
+
 ###0.1.8
 *修正编码问题
 
