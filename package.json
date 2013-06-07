@@ -11,6 +11,6 @@
   "license": "BSD",
   "dependencies": {
     "yeoman-generator": "~0.10.3",
-    "github":"~3.0.0"
+    "github":"~0.1.8"
   }
 }
