@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title> 码商 - 电子凭证</title>
+<script>window.g_config={appId:18};</script>
+<link rel="shortcut icon" href="http://www.taobao.com/favicon.ico" type="image/x-icon"/>
+
+<!-- start vmc css 3.1-->
+<link rel="stylesheet" href="http://assets.daily.taobao.net//??p/global/1.0/global-min.css,tbsp/tbsp.css,apps/hesper/tmse/footer.css?t=20100214.css" /><!-- end vmc css 3.1-->
+
+<!-- start vmc js 3.1 -->
+<script src="http://assets.daily.taobao.net//??s/kissy/1.2.0/kissy-min.js,p/global/1.0/global-min.js?t=20100214.js"></script><!-- end vmc js 3.1 -->
+
+
+
+
+<!-- 引入全局 JS 文件}}} -->
+<link rel="stylesheet" href="http://assets.daily.taobao.net/??apps/ma/20120109/common.css,apps/ma/20120109/validate.css" />
+<link rel="stylesheet" href="http://assets.daily.taobao.net//apps/ma/coder/20120802/cod/core/coder-min.css" />
+
+</head>
+<body>
+    <!-- start vmc 3.1 -->
+<div id="site-nav"><div id="site-nav-bd">
+    	<div class="sitenav-mobile"><a href=" http://www.taobao.com/m?spm=1.1000386.176505.4&amp;TBG=146112.176505.4">手机版</a></div>
+    <p class="login-info">
+ 	        <script>TB.Global.writeLoginInfo({"memberServer": "http://member1.daily.taobao.net/", "outmemServer" : "", "loginServer": "https://login.daily.taobao.net/", redirectUrl : "", logoutUrl : ""});</script>
+           </p>
+
+        <ul class="quick-menu">
+        <li class="home"><a href="http://www.taobao.com/" target="_top">淘宝网首页</a></li>
+        
+    </ul>
+</div></div>
+
+
+<!-- end vmc 3.1 -->
+	<script>TB.Global.init();</script>
+
+<script type="text/javascript">
+		var S = KISSY;
+        KISSY.later(function(){
+        	var elRight = S.one('.co-right');
+			if(elRight){
+            	var elLeft = elRight.prev('.co-left'),
+            	elParent = elRight.parent();
+            	elParent.css('overflow', "hidden");
+            	elParent.css('height', "auto");
+            	elRight.css('margin-bottom', "40px");
+            	elLeft.css('padding-bottom', "40px");
+            	elLeft.css('height', "auto");
+            	elLeft.css('height', elParent.innerHeight());
+			}
+        },500);
+</script>
+
+
+<!-- 引入全局吊顶文件}}} -->
+<div id="header">
+	<div class="header-top">
+		<div class="w990 clearfix manage-relative">
+			<h1 class="logo"><a href="http://ma.daily.taobao.net/codemerchant/index.htm" title="电子凭证"><b></b>电子凭证</a></h1>
+							<a class='ma' href='http://ma.daily.taobao.net/codemerchant/my_apply.htm'>码商管理</a>
+					</div>
+	</div>
+</div>
+<div id="content">
+<link rel="stylesheet" href="http://assets.daily.taobao.net//apps/ma/coder-pie/partner/20120830/page/style-min.css" />
+<link rel="stylesheet" href="http://assets.daily.taobao.net//apps/ma/coder/machine/20130606/page/style-min.css" />
+<style>
+.co-manage-content {overflow:hidden;}
+.pos-machine-batch {width:350px;height:150px;overflow: scroll-y;}
+.ways {vertical-align: middle;cursor: pointer;}
+.ma-manage-lists .status {width: 100px;}
+.ma-manage-lists .consume {width: 100px;}
+</style>
+<div class="co-manage-content">
+<div class="co-left">
+		<h2 class="co-left-head">码商管理</h2>
+		<ul class="co-left-menu">
+			<li><a  href="http://ma.daily.taobao.net/codemerchant/my_apply.htm">申请记录</a></li>
+							<li><a href="http://ma.daily.taobao.net/codemerchant/pos_machine_list.htm"  class="co-curent" >机具管理</a></li>
+				<li><a href="http://ma.daily.taobao.net/codemerchant/partner_list.htm" >合作卖家</a></li>
+				<li><a href="http://ma.daily.taobao.net/codemerchant/tools.htm" >码商工具</a></li>
+					</ul>
+</div>
+	<div class="co-right">
+				<h3 class="co-right-head">
+			新建机具
+		</h3>
+		<div class="ma-new-content">
+									<form action="http://ma.daily.taobao.net/codemerchant/pos_machine_list.htm" method="post">
+				<input name='_tb_token_' type='hidden' value='0CXTu5Gm'>
+				<div class="list-add-area">
+    				<label for="J_AddMaList" class="add-ma-list-label">机具编号列表：</label>             
+					<textarea id="J_AddMaText" class="add-ma-list-box pos-machine-batch"  rows="5"  name="_fm.p._0.a"></textarea>
+					<div style='clear:both;margin:10px 0 10px 90px;padding-top:10px;'>
+						<input type='radio' checked=trueb  name="_fm.p._0.e" value="true" />启用
+    					<input type='radio' name="_fm.p._0.e" value="false" />禁用
+    					<em style='color:#ff5400' >选择批量导入后的机具的状态。</em>
+					</div>
+									<div style="clear:both;margin:10px 0 10px 0px;padding-bottom:20px;">
+						<label for="J_AddMaList" class="add-ma-list-label">机具核销支持：</label>
+												<input type="checkbox" class="ways" value="1" name="_fm.p._0.w"> 串码 
+												<input type="checkbox" class="ways" value="2" name="_fm.p._0.w"> 二维码 
+												<input type="checkbox" class="ways" value="3" name="_fm.p._0.w"> 身份证 
+											</div>
+									<div class="remind-handler">
+						<p class="remind">提示:</p>
+						<p class="remind">1. 请每行输入一个机具编号！</p>
+						<p class="remind">2. 如需添加备注,行中以 | 分割,格式:(机具编号|备注文本)！</p>
+						<p class="remind">3. 每次导入最大行数为5000！</p>
+						<input id="J_ListSubmit" type="submit" value="批量提交" class="ma-add-list-btn" />
+					</div>
+					<input type='hidden' name='action' value='codemerchant/pos_machine_action' />
+    				<input type='hidden' name='event_submit_do_batch_create' value='sub' />
+                </div>
+				
+															</form>	
+		</div>
+		<h3 class="co-right-head">
+			 <span class="title-left">
+                机具管理 <em id="J_TotalNum">共8条记录</em>    
+            </span>
+			<form action='http://ma.daily.taobao.net/codemerchant/pos_machine_list.htm' method='get' id="J_UsedForm"> 
+			   <span class="title-right">
+                   <input type="checkbox" id="J_HasUsed" class="has-used" name='status' value='1'  />
+                   <label for="J_HasUsed">已启用</label>
+                </span>
+			</form>
+		</h3>
+
+		<table class="ma-manage-lists">
+			<caption>管理用户信息</caption>
+			<thead>
+				<tr>							
+					<th class="maid">
+						机具编号
+					</th>
+					<th class="link">
+						关联网点
+					</th>						
+					<th class="time">
+						关联时间
+					</th>
+					<th class="consume">
+						核销方式
+					</th>
+					<th class="status">
+						启用状态
+					</th>
+					<th class="remark">
+						备注
+					</th>
+					<th class="handler">
+						操作
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+												<tr>							
+					<td class="update" colspan="7">
+						更新时间 2013-06-07 13:00
+					</td>							
+				</tr>
+				<tr>
+					<td class="td-id">
+						kkkk-001
+					</td>
+					<td class="td-link">
+						<a href='http://detail.bendi.daily.taobao.net//store/detail.htm?id=13591b7b9f354e83b468b85af71553cc' target='_blank'>
+							上海弄堂菜
+						</a>
+					</td>							
+					<td class="td-time">
+						<p>2013-06-07</p>
+						<p>11:32:22</p>
+					</td>
+					<td class="td-consume">
+												<p>二维码</p>
+												<p>身份证</p>
+											</td>
+					<td class="td-state">
+						<p class=''>
+															已启用
+													</p>
+					</td>
+					<td class="td-remark" title="dsfsdfs">
+						dsfsdfs
+					</td>
+					<td class="td-handler" machine-id="91091">
+															<a href="javascript:void(0);" class="J_MaForbidden">禁用</a>
+																						<a href="javascript:void(0);" class="J_CancelLink">取消关联网点</a>
+																						<a href="javascript:void(0);" class="J_WaySetting" data-ways="2,3">核销方式</a>
+							    						<a href="javascript:void(0);" class="J_MaRemark">备注</a>
+    						<a class="J_MaDelete" href="javascript:void(0);">删除</a>
+					</td>
+				</tr>
+								<tr>							
+					<td class="update" colspan="7">
+						更新时间 2013-06-07 12:55
+					</td>							
+				</tr>
+				<tr>
+					<td class="td-id">
+						kkkk-002
+					</td>
+					<td class="td-link">
+						<a href='http://detail.bendi.daily.taobao.net//store/detail.htm?id=855ae64a6c5b4b34bcd362be528d1995' target='_blank'>
+							9527美丽鞋坊
+						</a>
+					</td>							
+					<td class="td-time">
+						<p>2013-06-07</p>
+						<p>11:28:08</p>
+					</td>
+					<td class="td-consume">
+												<p>串码</p>
+												<p>二维码</p>
+											</td>
+					<td class="td-state">
+						<p class=''>
+															已启用
+													</p>
+					</td>
+					<td class="td-remark" title="">
+						
+					</td>
+					<td class="td-handler" machine-id="91092">
+															<a href="javascript:void(0);" class="J_MaForbidden">禁用</a>
+																						<a href="javascript:void(0);" class="J_CancelLink">取消关联网点</a>
+																						<a href="javascript:void(0);" class="J_WaySetting" data-ways="1,2">核销方式</a>
+							    						<a href="javascript:void(0);" class="J_MaRemark">备注</a>
+    						<a class="J_MaDelete" href="javascript:void(0);">删除</a>
+					</td>
+				</tr>
+								<tr>							
+					<td class="update" colspan="7">
+						更新时间 2013-06-07 12:54
+					</td>							
+				</tr>
+				<tr>
+					<td class="td-id">
+						www-kfc-king10888
+					</td>
+					<td class="td-link">
+						<a href='http://detail.bendi.daily.taobao.net//store/detail.htm?id=f5e461cf62d7406d88d3831108c4d5c1' target='_blank'>
+							1990美丽说
+						</a>
+					</td>							
+					<td class="td-time">
+						<p>2013-06-07</p>
+						<p>12:48:04</p>
+					</td>
+					<td class="td-consume">
+												<p>串码</p>
+												<p>二维码</p>
+												<p>身份证</p>
+											</td>
+					<td class="td-state">
+						<p class=''>
+															已启用
+													</p>
+					</td>
+					<td class="td-remark" title="sdfsdfsd">
+						sdfsdfsd
+					</td>
+					<td class="td-handler" machine-id="91113">
+															<a href="javascript:void(0);" class="J_MaForbidden">禁用</a>
+																						<a href="javascript:void(0);" class="J_CancelLink">取消关联网点</a>
+																						<a href="javascript:void(0);" class="J_WaySetting" data-ways="1,2,3">核销方式</a>
+							    						<a href="javascript:void(0);" class="J_MaRemark">备注</a>
+    						<a class="J_MaDelete" href="javascript:void(0);">删除</a>
+					</td>
+				</tr>
+								<tr>							
+					<td class="update" colspan="7">
+						更新时间 2013-06-07 12:48
+					</td>							
+				</tr>
+				<tr>
+					<td class="td-id">
+						我的机具008
+					</td>
+					<td class="td-link">
+						<a href='http://detail.bendi.daily.taobao.net//store/detail.htm?id=3d7ee0ac9601f78002e28e8c497db8b9' target='_blank'>
+							Ka Ka Lapa专卖
+						</a>
+					</td>							
+					<td class="td-time">
+						<p>2013-06-07</p>
+						<p>12:48:58</p>
+					</td>
+					<td class="td-consume">
+												<p>二维码</p>
+												<p>身份证</p>
+											</td>
+					<td class="td-state">
+						<p class=''>
+															已启用
+													</p>
+					</td>
+					<td class="td-remark" title="">
+						
+					</td>
+					<td class="td-handler" machine-id="91392">
+															<a href="javascript:void(0);" class="J_MaForbidden">禁用</a>
+																						<a href="javascript:void(0);" class="J_CancelLink">取消关联网点</a>
+																						<a href="javascript:void(0);" class="J_WaySetting" data-ways="2,3">核销方式</a>
+							    						<a href="javascript:void(0);" class="J_MaRemark">备注</a>
+    						<a class="J_MaDelete" href="javascript:void(0);">删除</a>
+					</td>
+				</tr>
+								<tr>							
+					<td class="update" colspan="7">
+						更新时间 2013-06-07 11:39
+					</td>							
+				</tr>
+				<tr>
+					<td class="td-id">
+						TB001288
+					</td>
+					<td class="td-link">
+						<a href='http://detail.bendi.daily.taobao.net//store/detail.htm?id=3a276574ea20475e8eb53db8b8ea6b1b' target='_blank'>
+							518官方淘宝店
+						</a>
+					</td>							
+					<td class="td-time">
+						<p>2013-06-07</p>
+						<p>11:32:33</p>
+					</td>
+					<td class="td-consume">
+												<p>串码</p>
+												<p>身份证</p>
+											</td>
+					<td class="td-state">
+						<p class=''>
+															已启用
+													</p>
+					</td>
+					<td class="td-remark" title="asdfsfsdfsdfsdfsdfsdasd个电饭锅电饭锅个地方规定备注长点">
+						asdfsfsdfsdfsdfsdfsdasd个电饭锅电饭锅个地方规定备注长点
+					</td>
+					<td class="td-handler" machine-id="91114">
+															<a href="javascript:void(0);" class="J_MaForbidden">禁用</a>
+																						<a href="javascript:void(0);" class="J_CancelLink">取消关联网点</a>
+																						<a href="javascript:void(0);" class="J_WaySetting" data-ways="1,3">核销方式</a>
+							    						<a href="javascript:void(0);" class="J_MaRemark">备注</a>
+    						<a class="J_MaDelete" href="javascript:void(0);">删除</a>
+					</td>
+				</tr>
+								<tr>							
+					<td class="update" colspan="7">
+						更新时间 2013-06-07 11:38
+					</td>							
+				</tr>
+				<tr>
+					<td class="td-id">
+						1111w
+					</td>
+					<td class="td-link">
+						<a href='http://detail.bendi.daily.taobao.net//store/detail.htm?id=5207b797391c474dadb536c917a4d55d' target='_blank'>
+							DA FU HAO 徐泾镇安全管理事务中心西
+						</a>
+					</td>							
+					<td class="td-time">
+						<p>2013-06-07</p>
+						<p>11:38:10</p>
+					</td>
+					<td class="td-consume">
+											</td>
+					<td class="td-state">
+						<p class=''>
+															已启用
+													</p>
+					</td>
+					<td class="td-remark" title="">
+						
+					</td>
+					<td class="td-handler" machine-id="91111">
+															<a href="javascript:void(0);" class="J_MaForbidden">禁用</a>
+																						<a href="javascript:void(0);" class="J_CancelLink">取消关联网点</a>
+																						<a href="javascript:void(0);" class="J_WaySetting" data-ways="">核销方式</a>
+							    						<a href="javascript:void(0);" class="J_MaRemark">备注</a>
+    						<a class="J_MaDelete" href="javascript:void(0);">删除</a>
+					</td>
+				</tr>
+								<tr>							
+					<td class="update" colspan="7">
+						更新时间 2013-06-07 11:24
+					</td>							
+				</tr>
+				<tr>
+					<td class="td-id">
+						www-kfc-king10889
+					</td>
+					<td class="td-link">
+						<a href='http://detail.bendi.daily.taobao.net//store/detail.htm?id=1c5ca87cd97c4ea0ad1cb87d99cdeef7' target='_blank'>
+							1212名庄红酒会所
+						</a>
+					</td>							
+					<td class="td-time">
+						<p>2013-06-07</p>
+						<p>11:24:39</p>
+					</td>
+					<td class="td-consume">
+												<p>串码</p>
+											</td>
+					<td class="td-state">
+						<p class=''>
+															已启用
+													</p>
+					</td>
+					<td class="td-remark" title="kkkkkkkgdfgdfgdfg">
+						kkkkkkkgdfgdfgdfg
+					</td>
+					<td class="td-handler" machine-id="91112">
+															<a href="javascript:void(0);" class="J_MaForbidden">禁用</a>
+																						<a href="javascript:void(0);" class="J_CancelLink">取消关联网点</a>
+																						<a href="javascript:void(0);" class="J_WaySetting" data-ways="1">核销方式</a>
+							    						<a href="javascript:void(0);" class="J_MaRemark">备注</a>
+    						<a class="J_MaDelete" href="javascript:void(0);">删除</a>
+					</td>
+				</tr>
+								<tr>							
+					<td class="update" colspan="7">
+						更新时间 2013-04-24 14:54
+					</td>							
+				</tr>
+				<tr>
+					<td class="td-id">
+						shiyuan
+					</td>
+					<td class="td-link">
+						<a href='http://detail.bendi.daily.taobao.net//store/detail.htm?id=f51726528ae4450ba015b2f8b338f32c' target='_blank'>
+							两岸咖啡1
+						</a>
+					</td>							
+					<td class="td-time">
+						<p>2013-04-24</p>
+						<p>14:54:47</p>
+					</td>
+					<td class="td-consume">
+											</td>
+					<td class="td-state">
+						<p class=''>
+															已启用
+													</p>
+					</td>
+					<td class="td-remark" title="">
+						
+					</td>
+					<td class="td-handler" machine-id="85287">
+															<a href="javascript:void(0);" class="J_MaForbidden">禁用</a>
+																						<a href="javascript:void(0);" class="J_CancelLink">取消关联网点</a>
+																						<a href="javascript:void(0);" class="J_WaySetting" data-ways="">核销方式</a>
+							    						<a href="javascript:void(0);" class="J_MaRemark">备注</a>
+    						<a class="J_MaDelete" href="javascript:void(0);">删除</a>
+					</td>
+				</tr>
+							</tbody>
+		</table>
+	    	    <!--分页-->
+    <div id="page2" class="pagination">     
+    	    	        	        	<span class="pg-current pg-item">1</span>                    
+        	    	    	    </div>
+    <!--分页-->
+    	</div>
+
+</div>
+
+<div class="hidden">
+   <div class="ma-new-dialog" id="J_OlMachineType">
+   <div class="content">
+      <h3>
+         机具<em id="J_MachineName">TB1001</em>支持的核销方式
+      </h3>
+      <ul class="machine-type-list">
+         <li>
+            <input type="checkbox" id="J_MachineType1">
+            <label for="J_MachineType1">串码</label>
+         </li>
+         <li>
+            <input type="checkbox" id="J_MachineType2">
+            <label for="J_MachineType2">二维码</label>
+         </li>
+         <li>
+            <input type="checkbox" id="J_MachineType3">
+            <label for="J_MachineType3">身份证</label>
+         </li>
+         <li class="last-confirm">
+            <button id="J_ConfirmType" class="confirm-type">确认</button>
+         </li>
+      </ul>
+   </div>
+</div>
+</div>
+
+
+<div id="J_MaDialog">
+	<div class="ma-dialog">
+		<h2 class="ma-h2">
+			<span id="J_MaCloseDialog">
+				<strong>关闭</strong>
+				<em>&nbsp;&nbsp;&nbsp;</em>
+			</span>
+		</h2>
+		<div class="ma-dialog-main">
+			<p class="ma-q" id="J_OlRemindInfo">您确认要删除吗？</p>
+			<p id="J_MaDialogBtn">
+				<input type="button" class="ma-sure" />
+				<input type="button" class="ma-cancel" />
+			</p>
+		</div>
+	</div>
+</div>
+<div id="J_WriteRemark" class="hidden">
+	<div class="ma-overlay">
+		<h5>
+			<strong>添加备注</strong>
+			<em id="J_RemarkClose"></em>
+		</h5>		
+		<textarea id="J_RemarkBox" class="ma-remark-box"></textarea>
+		<div id="J_LimiterWrapper"></div>
+		<input type="button" id="J_WriteSubmit" class="ma-overlay-btn">
+	</div>
+</div>
+<div id="J_OlLink" class="hidden">
+	<div class="ma-overlay">
+		<h5>
+			<strong id="J_OlLinkTitle">关联机具TB008的网点</strong>
+			<em id="J_OlLinkClose"></em>
+		</h5>
+		<span>网点名：</span>
+		<div class="maol-link-area">
+			<input type="text" id="J_LinkText" class="maol-link-text">
+			<ul class="maol-link-info" id="J_MaLinkInfo">
+			</ul>
+			<input type="button" id="J_OlLinkBtn" class="maol-link-btn">
+		</div>
+	</div>
+</div>
+
+
+<input type="hidden" id="J_TbToken" value="0CXTu5Gm">
+<input type="hidden" id="J_DataUrl" value="http://ma.daily.taobao.net/codemerchant/pos_machine_list.do">
+<input type="hidden" id="J_ActionUrl" name='action' value="codemerchant/pos_machine_action">
+
+
+<input type='hidden' name="_fm.p._0.r" id='J_RemarkKey' />
+<input type='hidden' name="_fm.p._0.s" id='J_StoreIdKey' />
+<input type='hidden' name="_fm.p._0.i" id='J_IdKey' />
+<input type='hidden' name="_fm.p._0.c" id='J_ConsumeWayKey' />
+<input type='hidden' value="1,2,3" id='J_SupportWays' />
+
+
+<script type="text/javascript" src="http://assets.daily.taobao.net//apps/ma/coder/common/package-config.js"></script>
+<script type="text/javascript">
+    FB.config({
+        path: 'http://assets.daily.taobao.net//apps/ma/coder/',
+        name: 'machine',
+        version: '2.0',
+        pub: '20130606',
+        tag:'20130606'
+    });
+</script>
+<script type="text/javascript">
+    KISSY.use('page/init', function (S, Machine) {
+        Machine();
+        var elRight = S.one('.co-right'),
+        	elLeft = elRight.prev('.co-left'),
+        	elParent = elRight.parent(),
+        	height = elRight.innerHeight();
+            elLeft.css('height',height);
+            elParent.css('height',height);
+    })
+</script>
+
+
+
+	
+</div>
+<div id="footer">
+<div class="foot-nav">
+	<a href="http://www.taobao.com/about/">关于淘宝</a>
+	<a href="http://pro.taobao.com/">营销中心</a>
+	<a href="http://www.taobao.com/about/partners.php">合作伙伴</a>
+	<a href="http://service.taobao.com/support/help.htm">帮助中心</a>
+	<a href="http://www.taobao.com/about/join.php">诚征英才</a>
+
+	<a href="http://www.taobao.com/about/contact.php">联系我们</a>
+	<a href="http://www.taobao.com/sitemap.php">网站地图</a>
+	<a href="http://www.taobao.com/about/copyright.php">版权说明</a>
+	<a href="http://zhaoshang.mall.taobao.com">加入商城</a>
+	<a href="http://open.taobao.com/">开放平台</a>
+        <a href="http://taoke.alimama.com/">淘宝联盟</a>
+
+        <a href="http://www.taobao.com/m">手机淘宝</a>
+        <a href="http://www.taobao.com/go/chn/tbcampus/">淘宝大学</a>
+        <a href="http://seller.taobao.com/">商家门户</a>
+</div>
+<div class="ali-group">
+	<a href="http://page.china.alibaba.com/shtml/about/ali_group1.shtml">阿里巴巴集团</a>：阿里巴巴网络 - <a href="http://china.alibaba.com/">中国站</a> <a href="http://www.alibaba.com/">国际站</a> <a href="http://www.alibaba.co.jp/">日文站</a> |
+	<a href="http://www.taobao.com/?id=shouye_taobao">淘宝网</a> |
+	<a href="http://www.alipay.com/">支付宝</a> |
+	<a href="http://www.yahoo.com.cn/">中国雅虎</a> |
+	<a href="http://www.koubei.com/">口碑网</a> |
+	<a href="http://www.aliresearch.com">集团研究中心</a> |
+        <a href="http://www.alihz.com">阿里会展</a> |
+	<a href="http://tianxia.taobao.com/?id=shouye_tianxia">淘宝天下</a> |
+	<a href="http://hitao.taobao.com/">快乐淘宝</a> |
+	<a href="http://hua.taobao.com/">淘花网</a>
+
+</div>
+<div id="copyright">Copyright &copy; 2003-2013 Taobao.com 版权所有</div>
+ </div>
+<script>TB.Global.init();</script>
+</body>
+</html>
