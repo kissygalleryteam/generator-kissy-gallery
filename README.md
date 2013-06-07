@@ -43,6 +43,10 @@ yo kissy-gallery:version 1.1
 
 ##changelog
 
+###0.2.0
+*merge子命令实现，自动merge的功能
+*实现merge的同时同步文档
+
 ###0.1.9
 *去掉多余依赖
 
