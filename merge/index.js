@@ -7,7 +7,9 @@ var yeoman = require('yeoman-generator');
 var querystring = require('querystring');
 var http = require('http');
 
-var GLOBAL_TOKEN = '7b4ecb5420ad432956faf0218131355736acd142';
+//kissygalleryteam的token
+var GLOBAL_TOKEN = '9a47a5d3e1b466ff413beee93f5216a0ad08d8cd';
+
 var gitHubId;
 
 var github = new GitHubApi({
@@ -61,6 +63,25 @@ function getUserId(id) {
     return id;
 }
 
+
+/**
+ * 将JSON转换成字符串，包含换行
+ * @param {OBject} oJson JSON对象
+ * @return string
+ */
+
+function jsonToString(oJson) {
+    var arrStr = [];
+    for (var i in oJson) {
+        if(typeof oJson[i] !== 'string'){
+            arrStr.push('    "' + i + '":' + jsonToString(oJson[i]));
+        }else{
+            arrStr.push('    "' + i + '":"' + oJson[i] + '"');
+        }        
+    }
+    return '{\n' + arrStr.join(',\n') + '\n}';
+}
+
 function AppGenerator(args, options, config) {
     yeoman.generators.NamedBase.apply(this, arguments);
     this.version = args[0];
@@ -75,30 +96,48 @@ AppGenerator.prototype.comConfig = function() {
 }
 
 
+AppGenerator.prototype.writeJson = function(file, fnMap) {
+    if (!file || !fnMap) return false;
+    var sAbcJson = this.readFileAsString(file);
+    var oAbcJson = JSON.parse(sAbcJson);
+    oAbcJson = fnMap.call(this, oAbcJson);
+    this.write(file, jsonToString(oAbcJson));
+}
+
+
+
 AppGenerator.prototype.ask = function() {
     var cb = this.async();
-    var prompts = [{
-            name: 'name',
-            message: 'Input your github account:'
-        }
-    ];
+    var initGithubId = this.comConfig.githubName;
+    var prompts = [];
+    if (!initGithubId) {
+        prompts = [{
+                name: 'name',
+                message: 'Input your github account:'
+            }
+        ];
+    }
+
 
     this.prompt(prompts, function(err, props) {
         if (err) {
             return this.emit('error', err);
         }
-        gitHubId = props.name;
+        gitHubId = initGithubId ? initGithubId : props.name;
+        if(!initGithubId){
+            this.writeJson('./abc.json', function(json) {
+                json.githubName = gitHubId;
+                return json;
+            });            
+        }
         cb();
     }.bind(this));
 }
+
+
 AppGenerator.prototype.merge = function() {
-    var jsonFile = './abc.json';
-    var sAbcJson = this.readFileAsString(jsonFile);
-    this.comConfig = JSON.parse(sAbcJson);
 
 
-    // console.log(this.comConfig.name);
-    // console.log(gitHubId);
     github.authenticate({
         type: "oauth",
         token: GLOBAL_TOKEN
@@ -107,6 +146,7 @@ AppGenerator.prototype.merge = function() {
     var moduleName = this.comConfig.name;
     var title = 'Pulled at ' + formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss') + ' by kpm';
     var endGithubId = getUserId(gitHubId);
+    console.log('Sending pullRequest ...');
     github.pullRequests.create({
         repo: moduleName,
         user: 'kissygalleryteam',
@@ -144,7 +184,6 @@ AppGenerator.prototype.merge = function() {
         };
 
         var req = http.request(options, function(res) {
-
             var strData = '';
             res.on('data', function(data) {
                 strData += data;
@@ -154,7 +193,7 @@ AppGenerator.prototype.merge = function() {
             res.on('end', function() {
                 if (JSON.parse(strData).success === 1) {
                     console.log('Merged success');
-                }else{
+                } else {
                     console.log('Merged Error \n' + strData);
                 }
             });
