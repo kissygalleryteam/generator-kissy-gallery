@@ -159,17 +159,19 @@ AppGenerator.prototype.merge = function() {
             console.log('error' + e);
             return;
         }
-        console.log('PullRequest success');
+        console.log('PullRequest success,pulled number '+data.number);
         console.log('Merging...');
 
         var postData = querystring.stringify({
-            name: 'velocity',
+            name: moduleName,
             type: '',
             publish: 0,
             number: data.number,
             username: 'everyone',
             password: 'nobody'
         });
+    	
+		
 
         var options = {
             host: 'kpm.f2e.taobao.net',
