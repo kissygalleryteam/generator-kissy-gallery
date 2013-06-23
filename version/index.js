@@ -1,74 +1,80 @@
 'use strict';
 var util = require('util');
 var path = require('path');
+var fs = require('fs');
 var yeoman = require('yeoman-generator');
 
 module.exports = AppGenerator
 
 function AppGenerator(args, options, config) {
-  yeoman.generators.NamedBase.apply(this, arguments);
+    yeoman.generators.NamedBase.apply(this, arguments);
+    this.version = args[0];
 }
 
 util.inherits(AppGenerator, yeoman.generators.NamedBase);
 
-AppGenerator.prototype.askFor = function(version) {
+AppGenerator.prototype.comConfig = function(){
+    var jsonFile = './abc.json';
+    var sAbcJson = this.readFileAsString(jsonFile);
+    this.comConfig = JSON.parse(sAbcJson);
+}
 
 
-  var abcJSON;
-
-  try {
-    abcJSON = require(path.resolve(process.cwd(), 'abc.json'));
-  } catch (e) {
-
-  }
-
-  this.name = abcJSON.name;
-  this.author = abcJSON.author;
-
-  this.moduleVersion = version || abcJSON.version;
-  //TODO 如果参数版本号和 json的版本号不一致，则提示用户是否更新 json 版本
-
-
-
-  if (!this.moduleVersion) {
-    var cb = this.async();
-    var prompts = [{
-      name: 'version',
-      message: 'please input init version number ',
-      default: '1.0',
-      warning: '开始gallery之旅吧'
-    }];
-
-    this.prompt(prompts
-      ,function (err, props) {
-        if (err) {
-          this.emit('error', err);
-        }
-        this.moduleVersion = props.version;
-
-        cb();
-
-      }.bind(this));
-  }
+AppGenerator.prototype.copy = function(){
+    var curVer = this.comConfig.version;
+    if(this.version == curVer) return false;
+    copyDir(curVer,this.version);
+    this.writeJson('./abc.json',function(json){
+        json.version = this.version;
+        return json;
+    });
+    this.writeJson('./package.json',function(json){
+        json.version = this.version+'.0';
+        return json;
+    });
 
 }
 
-AppGenerator.prototype.initVersionDir = function(){
-  var version = this.moduleVersion
+AppGenerator.prototype.writeJson = function(file,fnMap){
+    if(!file || !fnMap) return false;
+    var sAbcJson = this.readFileAsString(file);
+    var oAbcJson = JSON.parse(sAbcJson);
+    oAbcJson = fnMap.call(this,oAbcJson);
+    this.write(file,JSON.stringify(oAbcJson));
+}
 
-  if(!version){
-    return
-  }
+/**
+ * @param {String} origin 原始目录，即待复制的目录
+ * @param {String} target 目标目录
+ */
+function copyDir(origin,target){
+    //如果原始目录不存在，则推出
+    if(!path.existsSync(origin)){
+        console.log(origin + 'is not exist......');
+    }
+    //如果目标目录不存在就创建一个
+    if(!path.existsSync(target)){
+        fs.mkdirSync(target);
+    }
+    //异步读取目录中的内容，把非黑名单中的目录或者文件复制到目标目录下
+    fs.readdir(origin,function(err,datalist){
+        if(err) return;
+        //console.log(datalist);
+        for(var i=0;i<datalist.length;i++){
+            var oCurrent = origin + '/' + datalist[i];
+            var tCurrent = target + '/' + datalist[i];
+            //console.log(fs.statSync(origin + '/' + datalist[i]).isFile());
 
-  this.mkdir(version)
-  this.mkdir(path.join(version,'demo'));
-  this.mkdir(path.join(version,'doc'));
-  this.mkdir(path.join(version,'plugin'));
-  this.mkdir(path.join(version,'guide'));
+            //如果当前是文件,则写入到对应的目标目录下
+            if(fs.statSync(oCurrent).isFile()){
+                fs.writeFileSync(tCurrent,fs.readFileSync(oCurrent, ''),'');
+            }
+            //如果是目录，则递归
+            else if(fs.statSync(oCurrent).isDirectory()){
+                copyDir(oCurrent,tCurrent);
+            }
 
-  this.template('index.js',path.join(version, 'index.js'));
-  this.template('index.less',path.join(version, 'index.less'));
-
-  this.template('index.md',path.join(version, 'guide', 'index.md'));
+        }
+    });
 }
 

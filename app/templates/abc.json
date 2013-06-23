@@ -1,11 +1,13 @@
 {
-  "name":"<%= moduleName %>",
-  "version":"<%= moduleVersion %>",
-  "desc":"description of your app",
-  "type":"kissy-pie",
-  "type-url":"http://abc.f2e.taobao.net/spec/kissy-gallery",
-  "author":{
-    "name": "<%= author %>",
-    "email": "<%= email %>"
-  }
+    "name": "<%= componentName %>",
+    "version": "<%= version %>",
+    "desc": "请修改组件描述",
+    "cover": "",
+    "author": {
+        "name": "<%= author%>",
+        "email": "<%= email%>",
+        "page": "请修改作者个人首页"
+    },
+    "type": "kissy-pie",
+    "type-url": "http://abc.alibaba-inc.com/r/kissy-pie"
 }

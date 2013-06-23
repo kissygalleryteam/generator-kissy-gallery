@@ -5,117 +5,105 @@ var yeoman = require('yeoman-generator');
 
 module.exports = Gallery;
 function Gallery(args, options, config) {
-  yeoman.generators.Base.apply(this, arguments);
-  var that = this;
-
-  this.hookFor('kissy-gallery:version', {
-    args:[false]
-  });
-
-  this.on('end',function(){
-    console.log('gallery dir build done!');
-    console.log("模块初始化完成！")
-    console.log("\n调用：")
-    console.log('  grunt')
-    console.log('  grunt test      # 测试你的组件')
-  })
+    yeoman.generators.Base.apply(this, arguments);
+    this.version = args[0] || '1.0';
+    this.cwd = options.env.cwd;
+    this.componentName = getComName(this);
+    this.on('end',function(){
+        this.installDependencies();
+        console.log("组件目录和文件初始化完成！")
+        console.log("\n打包组件运行：")
+        console.log('grunt')
+    })
 }
 
 util.inherits(Gallery, yeoman.generators.Base);
 
-var prt = Gallery.prototype
+var prt = Gallery.prototype;
 
-prt.askFor = function askFor() {
-  var cb = this.async();
+prt.askFor = function(){
+    //打印欢迎消息
+    var welcome = "\n" +
+        "\n __  _  ____ _____ _____ __ __".cyan +
+        "\n|  |/ ]|    / ___// ___/|  |  |".cyan +
+        "\n|  ' /  |  (   \\_(   \\_ |  |  |".white +
+        "\n|    \\  |  |\\__  |\\__  ||  ~  |".white +
+        "\n|     | |  |/  \\ |/  \\ ||___, |".green +
+        "\n|  .  | |  |\\    |\\    ||     |".green +
+        "\n|__|\\_||____|\\___| \\___||____/".green +
+        "\n                                                 " +
+        "\n  ____   ____  _      _        ___  ____   __ __ " +
+        "\n /    | /    || |    | |      /  _]|    \\ |  |  |" +
+        "\n|   __||  o  || |    | |     /  [_ |  D  )|  |  |" +
+        "\n|  |  ||     || |___ | |___ |    _]|    / |  ~  |" +
+        "\n|  |_ ||  _  ||     ||     ||   [_ |    \\ |___, |" +
+        "\n|     ||  |  ||     ||     ||     ||  .  \\|     |" +
+        "\n|___,_||__|__||_____||_____||_____||__|\\_||____/ " +
+        "\n                                                 ";
+    console.log(welcome);
+}
+prt.askAuthor = function(){
+    var cb = this.async();
+    var prompts = [{
+        name: 'author',
+        message: 'author of component:',
+        default: 'kissy-team'
+    },{
+        name: 'email',
+        message: 'email of author:',
+        default: 'kissy-team@gmail.com'
+    }];
 
-  // welcome message
-  var welcome = "\n" +
-    "\n __  _  ____ _____ _____ __ __".cyan +
-    "\n|  |/ ]|    / ___// ___/|  |  |".cyan +
-    "\n|  ' /  |  (   \\_(   \\_ |  |  |".white +
-    "\n|    \\  |  |\\__  |\\__  ||  ~  |".white +
-    "\n|     | |  |/  \\ |/  \\ ||___, |".green +
-    "\n|  .  | |  |\\    |\\    ||     |".green +
-    "\n|__|\\_||____|\\___| \\___||____/".green +
-    "\n                                                 " +
-    "\n  ____   ____  _      _        ___  ____   __ __ " +
-    "\n /    | /    || |    | |      /  _]|    \\ |  |  |" +
-    "\n|   __||  o  || |    | |     /  [_ |  D  )|  |  |" +
-    "\n|  |  ||     || |___ | |___ |    _]|    / |  ~  |" +
-    "\n|  |_ ||  _  ||     ||     ||   [_ |    \\ |___, |" +
-    "\n|     ||  |  ||     ||     ||     ||  .  \\|     |" +
-    "\n|___,_||__|__||_____||_____||_____||__|\\_||____/ " +
-    "\n                                                 ";
-  console.log(welcome);
+    this.prompt(prompts, function (err, props) {
+        if (err) {
+            return this.emit('error', err);
+        }
+        this.author = props.author;
+        this.email = props.email;
+        cb();
+    }.bind(this));
+}
+prt.copyFile = function(){
+    this.copy('Gruntfile.js','Gruntfile.js');
+    this.copy('_.gitignore','.gitignore');
+    this.template('abc.json','abc.json');
+    this.template('_package.json','package.json');
+    this.template('README.md', 'README.md');
 
-  var abcJSON = {};
+}
 
-  try {
-    abcJSON = require(path.resolve(process.cwd(), 'abc.json'));
-  } catch (e) {}
-
-  if (!abcJSON.author) {
-    abcJSON.author = {
-      name: '',
-      email: ''
+prt.mk = function(){
+    var version = this.version;
+    this.mkdir(version);
+    var fold = ['demo','spec','build','plugin','guide','meta'];
+    for(var i=0;i<fold.length;i++){
+        this.mkdir(path.join(version, fold[i]));
     }
-  }
-
-  var prompts = [{
-    name: 'moduleName',
-    message: 'Name of Project?',
-    default: abcJSON.name || path.basename(process.cwd())
-  },{
-    name: 'author',
-    message: 'Author Name:',
-    default: abcJSON.author.name,
-    warning: ''
-  },{
-    name: 'email',
-    message: 'Author Email:',
-    default: abcJSON.author.email,
-    warning: ''
-  },{
-    name: 'moduleVersion',
-    message: 'Version of Current Version:',
-    default: abcJSON.version || '1.0',
-    warning: ''
-  }];
-
-  this.prompt(prompts, function (err, props) {
-    if (err) {
-      return this.emit('error', err);
-    }
-
-    // manually deal with the response, get back and store the results.
-    // we change a bit this way of doing to automatically do this in the self.prompt() method.
-    this.moduleName = props.moduleName;
-    this.author = props.author;
-    this.email = props.email;
-    this.moduleVersion = props.moduleVersion;
-    cb();
-
-  }.bind(this));
-};
-
-prt.pkgJSON = function(){
-  this.template('_package.json','package.json');
-  console.log('请手动配置package.json，来方便进行kissy gallery打包！');
 }
 
-prt.abcJSON = function(){
-  this.template('abc.json','abc.json');
+prt.createVersion = function(){
+    var version = this.version;
+    this.comConfig = comConfig(this);
+    this.template('index.js', path.join(version, 'index.js'));
+    this.template('alias.js', path.join(version, 'meta','alias.js'));
+    this.template('modules.js', path.join(version, 'meta','modules.js'));
+    this.template('index.md', path.join(version, 'guide', 'index.md'));
+    this.template('index.html', path.join(version, 'demo', 'index.html'));
 }
 
-prt.readme = function(){
-  this.copy('README.md','README.md');
+function getComName(that){
+    var root = that.cwd;
+    return path.basename(root);
 }
 
-prt.gruntfile = function(){
-  this.template('Gruntfile.coffee','Gruntfile.coffee');
+function comConfig(that){
+    var jsonFile = './abc.json';
+    var sAbcJson = that.readFileAsString(jsonFile);
+    var comConfig = JSON.parse(sAbcJson);
+    var comName = comConfig.name;
+    if(!comName) return false;
+    var first = comName.substring(0,1).toUpperCase();
+    var componentClass = first + comName.substring(1);
+    comConfig.componentClass = componentClass;
+    return comConfig;
 }
-
-prt.install = function install() {
-  var cb = this.async();
-  this.npmInstall('', {}, cb);
-};

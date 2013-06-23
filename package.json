@@ -1,15 +1,16 @@
 {
   "name": "generator-kissy-gallery",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "kissy gallery generator",
   "repository": "",
   "keywords": [
     "yeoman-generator,kissy-gallery yeoman generator"
   ],
-  "author": "cookieu",
+  "author": "minghe,cookieu",
   "main": "app/index.js",
   "license": "BSD",
   "dependencies": {
-    "yeoman-generator": "~0.10.3"
+    "yeoman-generator": "~0.10.3",
+    "github":"~0.1.8"
   }
 }
