@@ -11,7 +11,8 @@
             <input ng-model="app.newVersion" type="text" class="input-small"/>
             <button class="btn btn-success"
                     data-sub="version"
-                    data-args="{{version}}"
+                    data-args="{{app.newVersion}}"
+                    ng-disabled="!app.newVersion"
                     ng-click="yeoman.run($event)">add</button>
         </div>
 
