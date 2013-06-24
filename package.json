@@ -10,7 +10,7 @@
   "main": "app/index.js",
   "license": "BSD",
   "dependencies": {
-    "yeoman-generator": "~0.10.3",
+    "abc-generator": "~0.1.1",
     "github":"~0.1.8"
   }
 }

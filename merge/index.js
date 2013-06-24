@@ -1,4 +1,4 @@
-'use strict';
+  'use strict';
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
@@ -119,10 +119,7 @@ AppGenerator.prototype.ask = function() {
     }
 
 
-    this.prompt(prompts, function(err, props) {
-        if (err) {
-            return this.emit('error', err);
-        }
+    this.prompt(prompts, function(props) {
         gitHubId = initGithubId ? initGithubId : props.name;
         if(!initGithubId){
             this.writeJson('./abc.json', function(json) {

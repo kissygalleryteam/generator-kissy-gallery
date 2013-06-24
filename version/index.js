@@ -2,16 +2,16 @@
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
-var yeoman = require('yeoman-generator');
+var generator = require('abc-generator');
 
 module.exports = AppGenerator
 
 function AppGenerator(args, options, config) {
-    yeoman.generators.NamedBase.apply(this, arguments);
+    generator.UINamedBase.apply(this, arguments);
     this.version = args[0];
 }
 
-util.inherits(AppGenerator, yeoman.generators.NamedBase);
+util.inherits(AppGenerator, generator.UINamedBase);
 
 AppGenerator.prototype.comConfig = function(){
     var jsonFile = './abc.json';

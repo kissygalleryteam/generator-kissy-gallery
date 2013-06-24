@@ -8,6 +8,6 @@
         "email": "<%= email%>",
         "page": "请修改作者个人首页"
     },
-    "type": "kissy-pie",
-    "type-url": "http://abc.alibaba-inc.com/r/kissy-pie"
+    "type": "kissy-gallery",
+    "type-url": "http://gallery.kissyui.com/guide"
 }
