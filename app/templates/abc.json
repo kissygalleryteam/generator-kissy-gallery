@@ -1,12 +1,13 @@
 {
     "name": "<%= componentName %>",
     "version": "<%= version %>",
-    "desc": "请修改组件描述",
+    "desc": "",
     "cover": "",
+    "tag":"",
     "author": {
         "name": "<%= author%>",
         "email": "<%= email%>",
-        "page": "请修改作者个人首页"
+        "page": ""
     },
     "type": "kissy-gallery",
     "type-url": "http://gallery.kissyui.com/guide"
