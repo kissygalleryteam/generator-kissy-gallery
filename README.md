@@ -43,7 +43,7 @@ yo kissy-gallery:version 1.1
 
 ##changelog
 
-###0.2.1
+###0.2.3
 
 *优化文档
 
