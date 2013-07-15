@@ -43,6 +43,9 @@ yo kissy-gallery:version 1.1
 
 ##changelog
 
+###0.2.4
+*修正merge命令bug
+
 ###0.2.3
 
 *优化文档
