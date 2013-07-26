@@ -10,7 +10,7 @@
   "main": "app/index.js",
   "license": "BSD",
   "dependencies": {
-    "abc-generator": "~0.1.2",
+    "abc-generator": "~0.1.4",
     "github":"~0.1.8"
   }
 }
