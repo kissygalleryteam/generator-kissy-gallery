@@ -5,6 +5,7 @@ var generator = require('abc-generator');
 var fs = require('fs');
 
 module.exports = Gallery;
+
 function Gallery(args, options, config) {
     generator.UIBase.apply(this, arguments);
     this.version = args[0] || '1.0';
@@ -19,9 +20,9 @@ function Gallery(args, options, config) {
 
     this.on('end',function(){
         this.installDependencies();
-        console.log("组件目录和文件初始化完成！")
-        console.log("\n打包组件运行：")
-        console.log('grunt')
+        console.log("组件目录和文件初始化完成！");
+        console.log("\n打包组件运行：");
+        console.log('grunt');
     })
 }
 
