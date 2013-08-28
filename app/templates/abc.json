@@ -3,7 +3,7 @@
     "version": "<%= version %>",
     "desc": "",
     "cover": "",
-    "tag":"",
+    "tag":"<%= tag%>",
     "author": {
         "name": "<%= author%>",
         "email": "<%= email%>",

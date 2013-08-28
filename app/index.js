@@ -56,11 +56,15 @@ prt.askAuthor = function(){
         name: 'email',
         message: 'email of author:',
         default: author.email
+    },{
+        name: 'tag',
+        message: 'tag of component:'
     }];
 
     this.prompt(prompts, function (props) {
         this.author = props.author;
         this.email = props.email;
+        this.tag = props.tag;
         cb();
     }.bind(this));
 }
@@ -127,7 +131,6 @@ function getComName(that){
     var root = that.cwd;
     return path.basename(root);
 }
-
 function comConfig(that){
     var jsonFile = './abc.json';
     var sAbcJson = that.readFileAsString(jsonFile);
@@ -139,3 +142,4 @@ function comConfig(that){
     comConfig.componentClass = componentClass;
     return comConfig;
 }
+

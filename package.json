@@ -1,6 +1,6 @@
 {
   "name": "generator-kissy-gallery",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "kissy gallery generator",
   "repository": "",
   "keywords": [
@@ -10,7 +10,7 @@
   "main": "app/index.js",
   "license": "BSD",
   "dependencies": {
-    "abc-generator": "~0.1.4",
+    "abc-generator": "~0.1.5",
     "github":"~0.1.8"
   }
 }

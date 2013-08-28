@@ -43,6 +43,10 @@ yo kissy-gallery:version 1.1
 
 ##changelog
 
+###0.2.6
+
+
+
 ###0.2.5
 
 * 修改demo kissy的引用路径（http://g.tbcdn.cn/kissy/k/1.3.0/kissy-min.js）
