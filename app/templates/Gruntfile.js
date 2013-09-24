@@ -6,11 +6,7 @@ module.exports = function(grunt) {
         // version是版本，也是发布目录
         // author必须是{name: "xxx", email: "xxx"}格式
         pkg: grunt.file.readJSON('abc.json'),
-        banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-            '<%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %>\n' +
-            '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-            '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-            ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+        banner: '/*!build time : <%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %>*/\n',
 
         // kmc打包任务，默认情况，入口文件是index.js，可以自行添加入口文件，在files下面
         // 添加
@@ -33,8 +29,10 @@ module.exports = function(grunt) {
                 ]
             }
         },
-        // 打包后压缩文件
-        // 压缩文件和入口文件一一对应
+        /**
+         * 对JS文件进行压缩
+         * @link https://github.com/gruntjs/grunt-contrib-uglify
+         */
         uglify: {
             options: {
                 banner: '<%= banner %>',
@@ -42,24 +40,41 @@ module.exports = function(grunt) {
                     ascii_only: true
                 }
             },
-            base: {
-                files: {
-                    '<%= pkg.version %>/build/index-min.js': ['<%= pkg.version %>/build/index.js']
-                }
+            page: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= pkg.version %>/build',
+                        src: ['**/*.js', '!**/*-min.js'],
+                        dest: '<%= pkg.version %>/build',
+                        ext: '-min.js'
+                    }
+                ]
             }
         },
         copy: {
             main: {
                 files: [
-                    {src: ['<%= pkg.version %>/index.css'], dest: '<%= pkg.version %>/build/index.css'}
+                    {
+                        expand: true,
+                        cwd: '<%= pkg.version %>',
+                        src: ['**/*.css'],
+                        dest: '<%= pkg.version %>/build'
+                    }
                 ]
             }
         },
         cssmin: {
-            combine: {
-                files: {
-                    '<%= pkg.version %>/build/index-min.css': ['<%= pkg.version %>/build/index.css']
-                }
+            main: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= pkg.version %>/build',
+                        src: ['**/*.css', '!**/*-min.css'],
+                        dest: '<%= pkg.version %>/build',
+                        ext: '-min.css'
+                    }
+                ]
             }
         }
     });
@@ -69,5 +84,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-kmc');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    return grunt.registerTask('default', ['kmc', 'uglify']);
+    return grunt.registerTask('default', ['kmc', 'uglify','copy','cssmin']);
 };

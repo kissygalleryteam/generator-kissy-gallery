@@ -43,9 +43,10 @@ yo kissy-gallery:version 1.1
 
 ##changelog
 
-###0.2.6
+###0.2.7
 
-
+* 输出问询提示
+* Gruntfile优化
 
 ###0.2.5
 

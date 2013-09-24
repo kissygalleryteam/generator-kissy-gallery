@@ -47,7 +47,7 @@ prt.askAuthor = function(){
         author.name = abcAuthor.name || 'kissy-team';
         author.email = abcAuthor.email || 'kissy-team@gmail.com';
     }
-
+    console.log('阿里同学author请使用花名，email请使用内网邮箱，tag请使用中文（多个英文逗号隔开）');
     var prompts = [{
         name: 'author',
         message: 'author of component:',

@@ -4,6 +4,7 @@
 
 * 版本：<%= version %>
 * 作者：<%= comConfig.author.name %>
+* 标签：
 * demo：[http://gallery.kissyui.com/<%= componentName %>/<%= version %>/demo/index.html](http://gallery.kissyui.com/<%= componentName %>/<%= version %>/demo/index.html)
 
 ## 初始化组件
