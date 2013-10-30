@@ -1,10 +1,10 @@
 {
   "name": "generator-kissy-gallery",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "kissy gallery generator",
   "repository": "",
   "keywords": [
-    "yeoman-generator,kissy-gallery yeoman generator"
+    "kissy","gallery","kissy-gallery","yeoman-generator"
   ],
   "author": "minghe,cookieu",
   "main": "app/index.js",

@@ -43,6 +43,10 @@ yo kissy-gallery:version 1.1
 
 ##changelog
 
+###0.2.8
+
+* fix #3
+
 ###0.2.7
 
 * 输出问询提示
