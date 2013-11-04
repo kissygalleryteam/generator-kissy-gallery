@@ -47,6 +47,7 @@ yo kissy-gallery:version 1.1
 
 * #4 增加组件名称的处理
 * #4 优化demo的模块加载
+* #4 增加githubName字段，用于kpm
 
 ###0.2.8
 

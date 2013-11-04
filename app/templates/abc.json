@@ -4,6 +4,7 @@
     "version": "<%= version %>",
     "desc": "",
     "tag":"<%= tag%>",
+    "githubName":"<%= githubName%>",
     "author": {
         "name": "<%= author%>",
         "email": "<%= email%>",

@@ -23,8 +23,7 @@ function Gallery(args, options, config) {
     this.on('end',function(){
         //this.installDependencies();
         console.log("组件目录和文件初始化完成！");
-        console.log("\n打包组件运行：");
-        console.log('grunt');
+        console.log("\n打包组件运行：grunt");
     })
 }
 
@@ -49,7 +48,7 @@ prt.askAuthor = function(){
         author.name = abcAuthor.name || 'kissy-team';
         author.email = abcAuthor.email || 'kissy-team@gmail.com';
     }
-    console.log('阿里同学author请使用花名，email请使用内网邮箱，tag请使用中文（多个英文逗号隔开）');
+    console.log('阿里同学author请使用花名，email请使用内网邮箱，tag请使用中文（多个英文逗号隔开），github账户名用于代码同步');
     var prompts = [{
         name: 'author',
         message: 'author of component:',
@@ -61,12 +60,16 @@ prt.askAuthor = function(){
     },{
         name: 'tag',
         message: 'tag of component:'
+    },{
+        name: 'githubName',
+        message: 'user name of github:'
     }];
 
     this.prompt(prompts, function (props) {
         this.author = props.author;
         this.email = props.email;
         this.tag = props.tag;
+        this.githubName = props.githubName;
         cb();
     }.bind(this));
 }
