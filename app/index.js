@@ -21,7 +21,7 @@ function Gallery(args, options, config) {
     }
 
     this.on('end',function(){
-        //this.installDependencies();
+        this.installDependencies();
         console.log("组件目录和文件初始化完成！");
         console.log("\n打包组件运行：grunt");
     })
