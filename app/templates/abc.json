@@ -1,8 +1,8 @@
 {
-    "name": "<%= componentName %>",
+    "name": "<%= reposName %>",
+    "comName":"<%= comName%>",
     "version": "<%= version %>",
     "desc": "",
-    "cover": "",
     "tag":"<%= tag%>",
     "author": {
         "name": "<%= author%>",

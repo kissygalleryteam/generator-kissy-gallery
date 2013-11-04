@@ -43,6 +43,11 @@ yo kissy-gallery:version 1.1
 
 ##changelog
 
+###0.3.0
+
+* #4 增加组件名称的处理
+* #4 优化demo的模块加载
+
 ###0.2.8
 
 * fix #3

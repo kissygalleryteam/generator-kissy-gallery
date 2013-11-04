@@ -1,5 +1,5 @@
 {
-    "name": "<%= componentName %>",
+    "name": "<%= reposName %>",
     "version": "<%= version %>.0",
     "devDependencies": {
         "grunt-contrib-uglify": "~0.2.0",

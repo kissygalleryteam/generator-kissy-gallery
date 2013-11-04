@@ -10,8 +10,10 @@ function Gallery(args, options, config) {
     generator.UIBase.apply(this, arguments);
     this.version = args[0] || '1.0';
     this.cwd = options.env.cwd;
-    this.componentName = getComName(this);
-
+    //库地址
+    this.reposName = getReposName(this);
+    //组件名称
+    this.comName = getComName(this.reposName);
     if (fs.existsSync('abc.json')) {
         this.abcJSON = JSON.parse(this.readFileAsString('abc.json'));
     } else {
@@ -19,7 +21,7 @@ function Gallery(args, options, config) {
     }
 
     this.on('end',function(){
-        this.installDependencies();
+        //this.installDependencies();
         console.log("组件目录和文件初始化完成！");
         console.log("\n打包组件运行：");
         console.log('grunt');
@@ -126,20 +128,28 @@ prt._scan = function _scan() {
   };
 
 };
+/**
+ * 获取库名称
+ */
 
-function getComName(that){
+function getReposName(that){
     var root = that.cwd;
     return path.basename(root);
+}
+/**
+ * 获取组件名称
+ */
+function getComName(reposName){
+    var first = reposName.substring(0,1).toUpperCase();
+    var comName = first + reposName.substring(1);
+    comName = comName.replace(/-(\w)/g,function($1,$2){
+        return $2.toUpperCase();
+    });
+    return comName;
 }
 function comConfig(that){
     var jsonFile = './abc.json';
     var sAbcJson = that.readFileAsString(jsonFile);
-    var comConfig = JSON.parse(sAbcJson);
-    var comName = comConfig.name;
-    if(!comName) return false;
-    var first = comName.substring(0,1).toUpperCase();
-    var componentClass = first + comName.substring(1);
-    comConfig.componentClass = componentClass;
-    return comConfig;
+    return JSON.parse(sAbcJson);
 }
 
