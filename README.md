@@ -43,6 +43,10 @@ yo kissy-gallery:version 1.1
 
 ##changelog
 
+###0.3.1
+
+* 增加flexcombo插件，支持本地调试
+
 ###0.3.0
 
 * #4 增加组件名称的处理
