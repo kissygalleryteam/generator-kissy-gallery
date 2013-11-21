@@ -47,7 +47,8 @@ yo kissy-gallery:version 1.1
 
 * 增加flexcombo插件，支持本地调试
 
-###0.3.0
+插件用法看https://npmjs.org/package/grunt-flexcombo
+ ###0.3.0
 
 * #4 增加组件名称的处理
 * #4 优化demo的模块加载
